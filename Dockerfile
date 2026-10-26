@@ -9,12 +9,20 @@
 # Pinned by digest, not by tag: the bytes copied below are then exactly the
 # ones from the upstream build that was tested, and no later retag can change
 # them. Bump both references together — see UPDATING.md.
-FROM ghcr.io/ovumcy/ovumcy-web:sha-8918dac@sha256:2f3a952e90166e8e33d00b1789d41565b648bfb7b3133b322dd26339c714bc8a AS upstream
+FROM ghcr.io/ovumcy/ovumcy-web:sha-d28ddba@sha256:07d6a9bfc3483c61643c0f7828a73524c91a268767b9cae703364f649c7aaf19 AS upstream
 
 FROM alpine:3.22
 
 # ca-certificates for outbound webhook reminders over HTTPS; tzdata because
 # cycle entries are dates and the server's day boundary follows TZ.
+#
+# The base is a floating tag on purpose, where the upstream binary above is a
+# digest: this trust store is the one the app checks a webhook receiver's
+# certificate against, and it only ever moves when this package is rebuilt. A
+# CA withdrawn upstream (eMudhra, 2026-10-20) stays trusted in every .s9pk
+# built before the withdrawal, so repin-and-rebuild is the fix, and `apk add`
+# resolving fresh on each build is what makes the rebuild enough. Check it:
+# `docker run --rm <image> sh -c 'apk info -v ca-certificates'`.
 RUN apk add --no-cache ca-certificates tzdata \
     && addgroup -S -g 10001 ovumcy \
     && adduser -S -D -H -u 10001 -G ovumcy -h /app ovumcy \
