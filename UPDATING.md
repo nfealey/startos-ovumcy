@@ -4,7 +4,7 @@ Upstream is the prebuilt image `ghcr.io/ovumcy/ovumcy-web`. Nothing is built fro
 
 ## The pin is currently a commit, not a release
 
-`v1.9.2` — the newest release when this package was written — cannot reset a password without a controlling terminal, and no StartOS action has one. The pin is therefore `sha-8918dac`, a main-branch build carrying upstream's non-interactive `reset-password`; `sha-` tags name one commit each, so the pin is immutable.
+`v1.9.2` — the newest release when this package was written — cannot reset a password without a controlling terminal, and no StartOS action has one. The pin is therefore `sha-d28ddba`, a main-branch build carrying upstream's non-interactive `reset-password`; `sha-` tags name one commit each, so the pin is immutable.
 
 **Move back to a release tag as soon as one contains that change.** The test is behavioral, not a changelog read — run it against the candidate image before repinning:
 

@@ -5,18 +5,18 @@ export const current = VersionInfo.of({
   // revision. The image is pinned to a post-1.9.2 main-branch commit (see
   // startos/manifest/index.ts), so the base stays 1.9.2 until upstream tags a
   // release that contains it.
-  version: '1.9.2:1',
+  version: '1.9.2:2',
   releaseNotes: {
     en_US:
-      'Run the service as root inside its own container: StartOS refuses the mount id-remap this package first used, and the upstream image has no chown. Pin a post-1.9.2 upstream build so account recovery works without a terminal.',
+      'Security update. A settings, onboarding or Today page left open can no longer write to — or read the status of — an account that signed in after it in the same browser. A refused form no longer spends the one-time value on a two-factor setup or recovery-code page. Outbound reminder webhooks get Go 1.27.3 (CVE-2026-111943, a certificate chain that could accept an untrusted intermediate) and a certificate store that no longer trusts the compromised eMudhra authority.',
     es_ES:
-      'Ejecuta el servicio como root dentro de su propio contenedor: StartOS rechaza la reasignación de identificadores de montaje que este paquete usaba antes, y la imagen oficial no incluye chown. Fija una compilación posterior a la 1.9.2 para que la recuperación de cuentas funcione sin terminal.',
+      'Actualización de seguridad. Una página de ajustes, de incorporación o de Hoy que quede abierta ya no puede escribir en una cuenta que haya iniciado sesión después en el mismo navegador, ni leer su estado. Un formulario rechazado ya no gasta el valor de un solo uso de la página de doble factor o de código de recuperación. Los webhooks de recordatorio salientes incorporan Go 1.27.3 (CVE-2026-111943, una cadena de certificados que podía aceptar un intermedio no confiable) y un almacén de certificados que ya no confía en la autoridad eMudhra comprometida.',
     de_DE:
-      'Der Dienst läuft als root in seinem eigenen Container: StartOS verweigert die zuvor verwendete ID-Umsetzung am Mount, und das Upstream-Image enthält kein chown. Außerdem ist ein Upstream-Build nach 1.9.2 gepinnt, damit die Kontowiederherstellung ohne Terminal funktioniert.',
+      'Sicherheitsupdate. Eine offen gelassene Einstellungs-, Einrichtungs- oder Heute-Seite kann nicht mehr in ein Konto schreiben, das sich danach im selben Browser angemeldet hat, und dessen Status nicht mehr lesen. Ein abgewiesenes Formular verbraucht den Einmalwert der Seite für Zwei-Faktor-Einrichtung oder Wiederherstellungscode nicht mehr. Ausgehende Erinnerungs-Webhooks erhalten Go 1.27.3 (CVE-2026-111943, eine Zertifikatskette, die ein nicht vertrauenswürdiges Zwischenzertifikat akzeptieren konnte) und einen Zertifikatsspeicher, der der kompromittierten Zertifizierungsstelle eMudhra nicht mehr vertraut.',
     pl_PL:
-      'Usługa działa jako root we własnym kontenerze: StartOS odrzuca stosowane wcześniej przemapowanie identyfikatorów montowania, a obraz upstream nie zawiera chown. Przypięto też kompilację upstream nowszą niż 1.9.2, aby odzyskiwanie konta działało bez terminala.',
+      'Aktualizacja bezpieczeństwa. Pozostawiona otwarta strona ustawień, wdrożenia lub Dzisiaj nie może już zapisywać na koncie, które zalogowało się po niej w tej samej przeglądarce, ani czytać jego stanu. Odrzucony formularz nie zużywa już jednorazowej wartości ze strony konfiguracji dwuetapowej ani kodu odzyskiwania. Wychodzące webhooki przypomnień otrzymują Go 1.27.3 (CVE-2026-111943, łańcuch certyfikatów mógł przyjąć niezaufany certyfikat pośredni) oraz magazyn certyfikatów, który nie ufa już skompromitowanemu urzędowi eMudhra.',
     fr_FR:
-      'Le service tourne en root dans son propre conteneur : StartOS refuse le remappage d’identifiants au montage utilisé auparavant, et l’image amont ne contient pas chown. Une version amont postérieure à 1.9.2 est également épinglée pour que la récupération de compte fonctionne sans terminal.',
+      'Mise à jour de sécurité. Une page de réglages, d’intégration ou Aujourd’hui laissée ouverte ne peut plus écrire dans un compte connecté après elle dans le même navigateur, ni lire son état. Un formulaire refusé ne consomme plus la valeur à usage unique de la page de double authentification ou de code de récupération. Les webhooks de rappel sortants bénéficient de Go 1.27.3 (CVE-2026-111943, une chaîne de certificats pouvait accepter un intermédiaire non fiable) et d’un magasin de certificats qui ne fait plus confiance à l’autorité eMudhra compromise.',
   },
   migrations: {
     up: async ({ effects }) => {},
